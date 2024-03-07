@@ -24,6 +24,13 @@ Literal =
 Espacial = Geomatry, Point, Polygon, MultiPolygon
 
 # Comandos
-create database = criar banco de dados
-create table = criar tabela
+create database "nome do banco de dados" = criar banco de dados
+
+create table "nome da tabela" = criar tabela
+
 describe "nome da tabela" = descrever a tabela
+
+drop database "nome do banco de dados" = apaga o banco de dados
+
+default character set utf8 
+default collate utf8_general_ci; = conjunto de caracteres padrão que vão ser suportados
