@@ -1,11 +1,13 @@
 # MySQL
-- DDL = Definição
-- DML = Manipulação
+- DDL = Definição = CREATE TABLE, CREATE DATABASE, ALTER TABLE, DROP TABLE
+- DML = Manipulação = INSERT INTO, UPDATE, DELETE, TRUNCATE
 - DQL = Solicitações
 
 Banco de dados tem Tabelas
 Tabelas tem Registros
 Registros tem Campos
+
+Registros, Linhas e Tuplas são a mesma coisa.
 
 # Tipos primitivos
 Numérico = 
@@ -91,3 +93,21 @@ ADD PRIMARY KEY("nome da coluna para ser a chave"); = adicionar uma KEY na colun
 
 DROP TABLE "nome da tabela" = apagar toda a tabela
     EX: DROP TABLE cursos;
+
+UPDATE "nome da tabela"
+SET "nome do campo" = "novo nome do item do campo"
+WHERE "nome da chave primaria do campo" = 'valor da chave';
+    EX: UPDATE cursos
+        SET nome = 'HTML5'
+        WHERE idcurso = '1';
+
+Caso você queira mudar apenass uma linha da tabela porém não tem a chave primária use o comando:
+    "LIMIT 1;"
+
+DELETE FROM "nome da tabela"
+WHERE "nome da chave" = "valor da chave"; = remover um item da tabela
+    EX: DELETE FROM cursos
+        WHERE idcurso = '8';
+
+TRUNCATE TABLE "nome da tabela"; = deletar toda a tabela
+    EX: TRUNCATE TABLE cursos;
