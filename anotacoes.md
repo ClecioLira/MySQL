@@ -113,5 +113,5 @@ WHERE "nome da chave" = "valor da chave"; = remover um item da tabela
     EX: DELETE FROM cursos
         WHERE idcurso = '8';
 
-TRUNCATE TABLE "nome da tabela"; = deletar toda a tabela
+TRUNCATE TABLE "nome da tabela"; = deletar todos dados da tabela
     EX: TRUNCATE TABLE cursos;
