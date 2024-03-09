@@ -9,6 +9,10 @@ Registros tem Campos
 
 Registros, Linhas e Tuplas são a mesma coisa.
 
+Quando quiser exportar o banco de dados vá em, SERVER, DATA EXPORT, selecione o banco de dados, marque EXPORT TO SELF-CONTAINED FILE, marque a opção INCLUDE CREATE SCHEMA e clique em START EXPORT.
+
+Quando quiser importar o banco de dados vá em, SERVER, DATA IMPORT, marque e selecione o arquivo em IMPORT FROM SELF-CONTAINED FILE e clique em START IMPORT.
+
 # Tipos primitivos
 Numérico = 
     inteiro = TinyInt, SmallInt, Int, MediumInt, BigInt.
