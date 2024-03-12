@@ -1,7 +1,7 @@
 # MySQL
 - DDL = Definição = CREATE TABLE, CREATE DATABASE, ALTER TABLE, DROP TABLE
 - DML = Manipulação = INSERT INTO, UPDATE, DELETE, TRUNCATE
-- DQL = Solicitações
+- DQL = Solicitações = SELECT
 
 Banco de dados tem Tabelas
 Tabelas tem Registros
@@ -65,9 +65,6 @@ INSERT INTO PESSOAS VALUES
 (DEFAULT, 'Clécio', '2002-01-03', 'M', '60.4', '1.70', 'Brasil');
 também pode adicionar varios valores seguidos adicionando uma , ao final de cada parênteses
 
-SELECT * FROM "nome da tabela" = para ver os dados inseridos na tabela
-    EX: SELECT * FROM pessoas;
-
 ALTER TABLE "nome da tabela" = alterar algo da tabela
     EX: ALTER TABLE pessoas;
 
@@ -115,3 +112,49 @@ WHERE "nome da chave" = "valor da chave"; = remover um item da tabela
 
 TRUNCATE TABLE "nome da tabela"; = deletar todos dados da tabela
     EX: TRUNCATE TABLE cursos;
+
+SELECT * FROM "nome da tabela" = para ver os dados inseridos na tabela
+    EX: SELECT * FROM pessoas;
+
+SELECT * FROM "nome da tabela" ORDER BY "nome do campo"; = para deixar os dados em ordem crescente
+    EX: SELECT * FROM pessoas ORDER BY nome;
+
+SELECT * FROM "nome da tabela" ORDER BY "nome do campo" DESC; = para deixar os dados em ordem decrescente
+    EX: SELECT * FROM pessoas ORDER BY nome DESC;
+
+SELECT "nome do campo" FROM "nome da tabela"; = caso queira ver apenas os dados do campo selecionado
+    EX: SELECT nome, ano FROM cursos ORDER BY ano, nome;
+
+SELECT "nome do campo" FROM "nome da tabela" WHERE "nome do campo + o valor"; = caso queira ver apenas as linhas do campo selecionado
+    EX: SELECT nome, ano FROM cursos WHERE ano = '2016' ORDER BY ano, nome;
+
+SELECT "nome do campo" FROM "nome da tabela"
+WHERE "nome do campo" BETWEEN "valor do ano" AND "valor do ano"; = caso queira ver apenas os dados entre os valores selecionados
+    EX: SELECT nome, ano FROM cursos
+        WHERE ano BETWEEN 2014 AND 2016
+        ORDER BY ano, nome;
+
+SELECT "nome dos campos" FROM "nome da tabela"
+WHERE "nome do campo" IN ("valore dos campos"); = o comando IN serve para colocar varios valores diferentes dentro dos parenteses e ver apenas os dados dos valores selecionados.
+    EX: SELECT nome, ano FROM cursos
+        WHERE ano IN (2014, 2016, 2020)
+        ORDER BY ano, nome;
+
+SELECT "nome dos campos" FROM "nome da tabela"
+WHERE "nome do campo" LIKE "valor desejado do campo"; = serve para caso você queira ver os dados com o valor parecido apos o LIKE
+    EX: SELECT nome FROM cursos
+        WHERE nome LIKE 'P%';
+
+
+# Operadores
+< = MENOR QUE
+> = MAIOR QUE
+<= MENOR OU IGUAL QUE
+=> MAIOR OU IGUAL QUE
+= IGUAL
+!=/ <> DIFERENTE
+BETWEEN = ENTRE
+AND = E
+OR = OU
+IN () = DENTRO DE
+LIKE = PARECIDO
