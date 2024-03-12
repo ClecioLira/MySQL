@@ -144,7 +144,28 @@ SELECT "nome dos campos" FROM "nome da tabela"
 WHERE "nome do campo" LIKE "valor desejado do campo"; = serve para caso você queira ver os dados com o valor parecido apos o LIKE
     EX: SELECT nome FROM cursos
         WHERE nome LIKE 'P%';
+O simbolo % tem grande importancia nesse caso, pois ele complementa o resto da palavra e o local onde ele for inserido trará diferentes resultados
+    EX: '%P', 'P%', '%P%'
+tambem tem o complemento _ que exige que tenha algo após ou antes o valor.
+    EX: '%P_', '_P%', '_%P%_'
 
+SELECT DISTINCT "nome do campo" FROM "nome da tabela"; = quando quiser saber os dados de algum campo só que sem se repetir valores iguais
+    EX: SELECT DISTINCT nacionalidade FROM pessoas;
+
+SELECT COUNT("valor do campo") FROM "nome da tabela"; = contar quantos cadastros tem essa tabela
+    EX: SELECT COUNT(*) FROM cursos;
+
+SELECT MAX("valor do campo") FROM "nome da tabela"; = saber o maior valor de um determinado campo da tabela
+    EX: SELECT MAX(carga) FROM cursos;
+
+SELECT MIN("valor do campo") FROM "nome da tabela"; = saber o menor valor de um determinado campo da tabela
+    EX: SELECT MIN(carga) FROM cursos;
+
+SELECT SUM("valor do campo") FROM "nome da tabela"; = saber a soma dos valores de um determinado campo da tabela
+    EX: SELECT SUM(carga) FROM cursos;
+
+SELECT AVG("valor do campo") FROM "nome da tabela"; = saber a media dos valores de um determinado campo da tabela
+    EX: SELECT AVG(carga) FROM cursos;
 
 # Operadores
 < = MENOR QUE
@@ -158,3 +179,32 @@ AND = E
 OR = OU
 IN () = DENTRO DE
 LIKE = PARECIDO
+NOT LIKE = NÃO PARECIDO
+
+# EXERCICIOS
+1°  SELECT nome, sexo FROM gafanhotos 
+    WHERE sexo = 'F';
+
+2°  SELECT * FROM gafanhotos 
+    WHERE nascimento BETWEEN '2000-01-01' AND '2015-12-31';
+    
+3°  SELECT * FROM gafanhotos 
+    WHERE sexo = 'M' AND profissao = 'Programador';
+
+4°  SELECT * FROM gafanhotos 
+    WHERE sexo = 'F' AND nacionalidade = 'Brasil' AND nome LIKE 'J%';
+
+5°  SELECT * FROM gafanhotos 
+    WHERE sexo = 'M' AND nacionalidade != 'Brasil' AND peso < 100 AND nome LIKE '%silva%';
+
+6°  SELECT MAX(altura) FROM gafanhotos 
+    WHERE sexo = 'M' AND nacionalidade = 'Brasil';
+
+7°  SELECT AVG(peso) FROM gafanhotos;
+
+8°  SELECT MIN(peso) FROM gafanhotos 
+    WHERE sexo = 'F' AND nacionalidade != 'Brasil' 
+    AND nascimento BETWEEN '1990-01-01' AND '2000-12-31';
+
+9°  SELECT COUNT(*) FROM gafanhotos 
+    WHERE sexo = 'F' AND altura > '1.90';
