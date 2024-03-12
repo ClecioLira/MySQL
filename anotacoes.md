@@ -167,6 +167,21 @@ SELECT SUM("valor do campo") FROM "nome da tabela"; = saber a soma dos valores d
 SELECT AVG("valor do campo") FROM "nome da tabela"; = saber a media dos valores de um determinado campo da tabela
     EX: SELECT AVG(carga) FROM cursos;
 
+SELECT "nome do campo" FROM "nome da tabela" GROUP BY "nome do campo"; = para agrupar e saber a quantidade de valores que tem em determinado grupo
+    EX: SELECT carga, COUNT(*) FROM cursos
+        GROUP BY carga;
+
+SELECT "nome do campo" FROM "nome da tabela" GROUP BY "nome do campo" HAVING COUNT(*) "operador" "valor desejado"; = seleciona apenas os agrupamentos que tem valores de acordo com o operador e o valor desejado
+    EX: SELECT ano, count(*) FROM cursos
+        GROUP BY ano
+        HAVING COUNT(ano) >= 5;
+O HAVING so responde de acordo com o campo que foi agrupado no GROUP BY
+
+SELECT carga, count(*) FROM cursos
+WHERE ano > 2015
+GROUP BY carga
+HAVING carga > (SELECT AVG(carga) FROM cursos); = fazer agrupamento de SELECT
+
 # Operadores
 < = MENOR QUE
 > = MAIOR QUE
@@ -208,3 +223,20 @@ NOT LIKE = NÃO PARECIDO
 
 9°  SELECT COUNT(*) FROM gafanhotos 
     WHERE sexo = 'F' AND altura > '1.90';
+
+10° SELECT profissao, COUNT(*) FROM         gafanhotos
+    GROUP BY profissao;
+
+11° SELECT sexo, COUNT(*) FROM gafanhotos
+    WHERE nascimento > '2005-01-01'
+    GROUP BY sexo;
+
+12° SELECT nacionalidade, COUNT(*) FROM gafanhotos
+    WHERE nacionalidade != 'Brasil'
+    GROUP BY nacionalidade
+    HAVING COUNT(*) > '3';
+
+13° SELECT COUNT(*), peso, altura FROM gafanhotos
+    WHERE peso > 100
+    GROUP BY altura
+    HAVING altura > (SELECT AVG(altura) FROM gafanhotos);
