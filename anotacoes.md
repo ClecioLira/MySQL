@@ -13,6 +13,11 @@ Quando quiser exportar o banco de dados vá em, SERVER, DATA EXPORT, selecione o
 
 Quando quiser importar o banco de dados vá em, SERVER, DATA IMPORT, marque e selecione o arquivo em IMPORT FROM SELF-CONTAINED FILE e clique em START IMPORT.
 
+A = Atomicidade = Fazer a tarefa por completo ou nada será considerado.
+C = Consistencia = Se antes de fazer a transação o banco de dados estava ok? Então após a transação ele tem que continuar ok!
+I = Isolamento = Fazer tarefas de modo isoladas.
+D = Durabilidade = Durar o tempo que for necessário.
+
 # Tipos primitivos
 Numérico = 
     inteiro = TinyInt, SmallInt, Int, MediumInt, BigInt.
@@ -181,6 +186,35 @@ SELECT carga, count(*) FROM cursos
 WHERE ano > 2015
 GROUP BY carga
 HAVING carga > (SELECT AVG(carga) FROM cursos); = fazer agrupamento de SELECT
+
+ALTER TABLE "nome da tabela"
+ADD COLUMN "nome da coluna que deseja adicionar" "tipo da coluna"; = Adicionando uma chave estrangeira.
+    EX: ALTER TABLE pessoas
+        ADD COLUMN cursopreferido int;
+
+ALTER TABLE "nome da tabela"
+ADD FOREIGN KEY ("nome do campo")
+REFERENCES "nome da tabela"("nome do campo"); = Adicionar a chave primaria de uma tabela em outra.
+    EX: ALTER TABLE gafanhotos
+        ADD FOREIGN KEY (cursopreferido)
+        REFERENCES cursos(idcurso);
+
+UPDATE "nome da tabela"
+SET "nome do campo"
+WHERE "chave primaria" = "valor da chave"; = Adicionar a chave estrangeira em um campo da tabela.
+    EX: UPDATE gafanhotos 
+        SET cursopreferido = '6'
+        WHERE id = '1';
+
+SELECT gafanhotos.nome, gafanhotos.cursopreferido, cursos.nome, cursos.ano
+FROM gafanhotos
+INNER JOIN cursos
+ON cursos.idcurso = gafanhotos.cursopreferido; = Caso queira ver a junção das tabelas com os seus valores selecionados
+
+SELECT gafanhotos.nome, gafanhotos.cursopreferido, cursos.nome, cursos.ano
+FROM gafanhotos
+LEFT OUTER JOIN cursos
+ON cursos.idcurso = gafanhotos.cursopreferido; = Aqui ele vai mostrar as tabelas com todos os valores preferenciando a tabela a esquerda(LEFT) ou a tabela a direita(RIGHT).
 
 # Operadores
 < = MENOR QUE
