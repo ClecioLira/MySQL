@@ -216,6 +216,23 @@ FROM gafanhotos
 LEFT OUTER JOIN cursos
 ON cursos.idcurso = gafanhotos.cursopreferido; = Aqui ele vai mostrar as tabelas com todos os valores preferenciando a tabela a esquerda(LEFT) ou a tabela a direita(RIGHT).
 
+CREATE TABLE gafanhoto_assiste_curso (
+id INT NOT NULL AUTO_INCREMENT,
+amd DATE,
+idgafanhoto INT,
+idcurso INT,
+PRIMARY KEY (id),
+FOREIGN KEY (idgafanhoto) REFERENCES gafanhotos(id),
+FOREIGN KEY (idcurso) REFERENCES cursos(idcurso)
+); = criando uma tabela com relacionamentos e ja adicionando a chave primaria e as chaves estrangeiras.
+
+SELECT gafanhotos.nome, cursos.nome FROM gafanhotos
+JOIN gafanhoto_assiste_curso
+ON gafanhotos.id = gafanhoto_assiste_curso.idgafanhoto
+JOIN cursos
+ON cursos.idcurso = gafanhoto_assiste_curso.idcurso
+ORDER BY gafanhotos.nome; = pegando valores de 2 tabelas diferentes e mostrando os valores em 1 tabela de relacionamento de N para N.
+
 # Operadores
 < = MENOR QUE
 > = MAIOR QUE
